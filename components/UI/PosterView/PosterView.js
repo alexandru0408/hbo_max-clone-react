@@ -12,7 +12,10 @@ const PosterView = (props) => {
       <div className="poster-view__thumbnails">
         {loopComp(
           <div className="poster-view__thumbnail">
-            <img src="https://cdn.dribbble.com/users/3408570/screenshots/10746910/dribble_4x.jpg" />
+            <img
+              src="https://cdn.dribbble.com/users/3408570/screenshots/10746910/dribble_4x.jpg"
+              alt=""
+            />
             <div className="poster-view__top-layer">
               <i className="fas fa-play" />
             </div>

@@ -23,7 +23,10 @@ const SearchModal = (props) => {
       <div className="search-modal__thumbnails">
         {loopComp(
           <div className="search-modal__thumbnail">
-            <img src="https://cdn.dribbble.com/users/3408570/screenshots/10746910/dribble_4x.jpg" />
+            <img
+              src="https://cdn.dribbble.com/users/3408570/screenshots/10746910/dribble_4x.jpg"
+              alt=""
+            />
             <div className="search-modal__top-layer">
               <i className="fas fa-play" />
             </div>

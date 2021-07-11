@@ -7,7 +7,7 @@ export const FeaturedMedia = () => {
         height="100%"
         src="https://www.youtube.com/embed/RyTqAemkPWo?autoplay=1&loop=1&start=6"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullscreen
+        allowFullScreen
       />
       <div className="featured-media__bg">
         <div className="featured-media__container">

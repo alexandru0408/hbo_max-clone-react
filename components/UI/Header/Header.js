@@ -16,6 +16,7 @@ const Header = (props) => {
       <div className="top-header__account">
         <img
           src="https://images.generated.photos/B7CJLWXHEhr73EmhhiWyTK-WT39VwobNNqwknL-vwUg/rs:fit:512:512/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zLzA5/NzY1NDcuanBn.jpg"
+          alt=""
           className="top-header__user-img"
         />
         <div className="top-header___user-name">Alessya</div>
