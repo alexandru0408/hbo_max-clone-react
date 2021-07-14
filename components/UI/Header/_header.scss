@@ -11,8 +11,15 @@
   width: 100%;
   z-index: 10;
   transition: background 0.3s ease-in-out;
+  &--menu-open {
+    background: black;
+  }
   &:hover {
     background: rgba(0, 0, 0, 1);
+  }
+  &__menu-btn,
+  &__search-btn {
+    cursor: pointer;
   }
   &__logo {
     background-size: 100% 100%;
@@ -31,6 +38,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
   }
   &__user-img {
     height: 30px;

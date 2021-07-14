@@ -1,19 +1,39 @@
 import Account from "../Account/Account";
 import SearchModal from "../SearchModal/SearchModal";
+import { useStateContext } from "../../HBOProvider";
 
 const Header = (props) => {
+  const globalState = useStateContext();
+
   return (
-    <header className="top-header">
+    <header
+      className={`top-header ${
+        globalState.accountMenuOpen || globalState.sideNavOpen
+          ? "top-header--menu-open"
+          : ""
+      }`}
+    >
       <div className="top-header__left-side">
-        <div className="top-header__menu-btn">
+        <div
+          onClick={() => globalState.setSideNavOpen(true)}
+          className="top-header__menu-btn"
+        >
           <i className="fas fa-bars" />
         </div>
-        <div className="top-header__search-btn">
+        <div
+          onClick={() => globalState.setSearchOpen(true)}
+          className="top-header__search-btn"
+        >
           <i className="fas fa-search" />
         </div>
       </div>
       <div className="top-header__logo"></div>
-      <div className="top-header__account">
+      <div
+        onClick={() =>
+          globalState.setAccountMenuOpen(!globalState.accountMenuOpen)
+        }
+        className="top-header__account"
+      >
         <img
           src="https://images.generated.photos/B7CJLWXHEhr73EmhhiWyTK-WT39VwobNNqwknL-vwUg/rs:fit:512:512/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zLzA5/NzY1NDcuanBn.jpg"
           alt=""
