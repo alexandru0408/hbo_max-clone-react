@@ -14,13 +14,20 @@ export default function Home() {
   useEffect(() => {}, []);
   return AuthCheck(
     <MainLayout>
-      <FeaturedMedia />
+      <FeaturedMedia
+        mediaUrl="https://www.youtube.com/embed/RyTqAemkPWo?autoplay=1&loop=1&start=6"
+        title="Mortal Kombat"
+        location="In cinemas and HBO MAX. Streaming throughout August 4."
+        linkUrl="/movie/460465"
+        type="front"
+      />
       <LazyLoad
         offset={-400}
         placeholder={<PlaceHolders title="Movies" type="large-v" />}
       >
         <MediaRow
           title="Movies"
+          mediaType="movie"
           type="large-v"
           endpoint="discover/movie?sort_by=popularity.desc&primary_release_year=2021"
         />
@@ -31,6 +38,7 @@ export default function Home() {
       >
         <MediaRow
           title="Series"
+          mediaType="series"
           type="small-h"
           endpoint="discover/tv?primary_release_year=2021"
         />
@@ -41,6 +49,7 @@ export default function Home() {
       >
         <MediaRow
           title="Action"
+          mediaType="movie"
           type="small-v"
           endpoint="discover/movie?with_genres=28&primary_release_year=2021"
         />
@@ -51,6 +60,7 @@ export default function Home() {
       >
         <MediaRow
           title="Horror"
+          mediaType="movie"
           type="small-v"
           endpoint="discover/movie?with_genres=27&primary_release_year=2021"
         />
@@ -61,6 +71,7 @@ export default function Home() {
       >
         <MediaRow
           title="Animations"
+          mediaType="movie"
           type="large-h"
           endpoint="discover/movie?with_genres=16&primary_release_year=2021"
         />
@@ -71,6 +82,7 @@ export default function Home() {
       >
         <MediaRow
           title="Sci-fi"
+          mediaType="movie"
           type="small-v"
           endpoint="discover/movie?with_genres=878&primary_release_year=2021"
         />

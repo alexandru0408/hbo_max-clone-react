@@ -3,6 +3,7 @@
 @use 'create-user';
 @use '../components/UI/Header/header';
 @use '../components/UI/SideNav/side-nav';
+@use '../components/UI/GenreNav/genre-nav';
 @use '../components/UI/FeaturedMedia/featured-media';
 @use '../components/UI/MediaRow/media-row';
 @use '../components/UI/PlaceHolders/place-holder';
@@ -12,4 +13,12 @@
 
 h1 {
   font-size: 3rem;
+}
+html,
+body {
+  background: black;
+}
+
+.hide-comp {
+  display: none;
 }

@@ -3,13 +3,6 @@ import { useStateContext } from "../../HBOProvider";
 const Account = () => {
   const globalState = useStateContext();
 
-  const loopComp = (comp, digit) => {
-    let thumbnails = [];
-    for (let index = 0; index <= digit; index++) {
-      thumbnails.push(comp);
-    }
-    return thumbnails;
-  };
   return (
     <div
       className={`account ${
@@ -19,25 +12,22 @@ const Account = () => {
       <div className="account__details">
         <div className="account__title">My List</div>
         <div className="account__watch-list">
-          {loopComp(
-            <div className="account__watch-video">
-              <img
-                src="https://cdn.shopify.com/s/files/1/0013/2874/2466/products/rick-and-morty-tv-invasion-poster-24-x-36-581_1024x.jpg?v=1616627934"
-                alt=""
-              />
-              <div className="account__watch-overlay">
-                <div className="account__watch-buttons">
-                  <div className="account__watch-circle">
-                    <i className="fas fa-play" />
-                  </div>
-                  <div className="account__watch-circle">
-                    <i className="fas fa-times" />
-                  </div>
+          <div className="account__watch-video">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0013/2874/2466/products/rick-and-morty-tv-invasion-poster-24-x-36-581_1024x.jpg?v=1616627934"
+              alt=""
+            />
+            <div className="account__watch-overlay">
+              <div className="account__watch-buttons">
+                <div className="account__watch-circle">
+                  <i className="fas fa-play" />
+                </div>
+                <div className="account__watch-circle">
+                  <i className="fas fa-times" />
                 </div>
               </div>
-            </div>,
-            5
-          )}
+            </div>
+          </div>
         </div>
       </div>
       <div className="account__menu">

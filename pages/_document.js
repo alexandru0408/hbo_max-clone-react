@@ -17,8 +17,7 @@ class MyDocument extends Document {
             crossOrigin="true"
           />
           <link
-            rel="preload"
-            as="style"
+            rel="preconnect"
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Poppins:ital,wght@0,200;0,300;1,100;1,200;1,400&display=swap"
           />
           <link rel="stylesheet" href="/fontawesome/css/all.min.css" />
