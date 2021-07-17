@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 
 export const StateContext = React.createContext();
+import ls from "local-storage";
 
 export function useStateContext() {
   return useContext(StateContext);
@@ -18,6 +19,29 @@ export function HBOProvider({ children }) {
   const [sideNavOpen, setSideNavOpen] = useState(false);
   const [accountMenuOpen, setAccountMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [watchList, setWatchList] = useState(ls.get("myList"));
+
+  const addToList = (video) => {
+    let myList;
+    if (ls("myList") !== null) {
+      myList = ls.get("myList");
+      myList.push(video);
+      ls.set("myList", myList);
+      setWatchList(myList);
+    } else {
+      ls.set("myList", [video]);
+      setWatchList(ls.get("myList"));
+    }
+  };
+
+  const removeFromList = (videoId) => {
+    let myList = ls("myList");
+    myList = myList.filter((item) => item.mediaId != videoId);
+    ls.set("myList", myList);
+    setWatchList(myList);
+  };
+
+  const thumbTypes = ["large-v", "small-v", "large-h", "small-h"];
 
   return (
     <StateContext.Provider
@@ -31,6 +55,10 @@ export function HBOProvider({ children }) {
         setAccountMenuOpen,
         searchOpen,
         setSearchOpen,
+        thumbTypes,
+        addToList,
+        removeFromList,
+        watchList,
       }}
     >
       {children}

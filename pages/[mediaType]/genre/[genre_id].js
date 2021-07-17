@@ -1,22 +1,22 @@
 import { useRouter } from "next/router";
-import { useStateContext } from "../../components/HBOProvider";
-import MainLayout from "../../components/Layouts/MainLayout";
-import FeaturedMedia from "../../components/UI/FeaturedMedia/FeaturedMedia";
-import MediaRow from "../../components/UI/MediaRow/MediaRow";
-import AuthCheck from "../../components/AuthCheck";
+import { useStateContext } from "../../../components/HBOProvider";
+import MainLayout from "../../../components/Layouts/MainLayout";
+import FeaturedMedia from "../../../components/UI/FeaturedMedia/FeaturedMedia";
+import MediaRow from "../../../components/UI/MediaRow/MediaRow";
+import AuthCheck from "../../../components/AuthCheck";
 import LazyLoad from "react-lazyload";
-import PlaceHolders from "../../components/UI/PlaceHolders/PlaceHolders";
-import GenreNav from "../../components/UI/GenreNav/GenreNav";
-import { shuffleArray } from "../../components/util/utilities";
+import PlaceHolders from "../../../components/UI/PlaceHolders/PlaceHolders";
+import GenreNav from "../../../components/UI/GenreNav/GenreNav";
+import { shuffleArray } from "../../../components/util/utilities";
 import axios from "axios";
 
-export default function MediaTypeView(props) {
+export default function GenreView(props) {
   const globalState = useStateContext();
   const router = useRouter();
 
   const showRandomMedia = () => {
     let thumbType;
-    return props.genresData.map((item) => {
+    return props.genresData.map((item, index) => {
       thumbType = shuffleArray(globalState.thumbTypes)[0];
       return (
         <LazyLoad
@@ -27,8 +27,13 @@ export default function MediaTypeView(props) {
           <MediaRow
             title={item.name}
             type={thumbType}
+            updateData={props.query.genre_id}
             mediaType={props.query.mediaType}
-            endpoint={`discover/${props.query.mediaType}?with_genres=${item.id}&sort_by=popularity.desc&primary_release_year=2021`}
+            endpoint={`discover/${props.query.mediaType}?with_genres=${
+              props.query.genre_id
+            }&sort_by=popularity.desc&primary_release_year=2021&page=${
+              index + 1
+            }`}
           />
         </LazyLoad>
       );
@@ -47,7 +52,6 @@ export default function MediaTypeView(props) {
         linkUrl={`/${props.query.mediaType}/${props.featuredData.id}`}
         type="single"
         mediaType={props.query.mediaType}
-        updateData={props.featuredData.id}
         mediaId={props.featuredData.id}
       />
       <GenreNav
@@ -67,7 +71,7 @@ export async function getServerSideProps(context) {
       `https://api.themoviedb.org/3/genre/${context.query.mediaType}/list?api_key=8e36ebdb3d86e880fffd99dbe59dffb1&language=en-US`
     );
     featuredData = await axios.get(
-      `https://api.themoviedb.org/3/discover/${context.query.mediaType}?primary_release_year=2021&api_key=8e36ebdb3d86e880fffd99dbe59dffb1&language=en-US`
+      `https://api.themoviedb.org/3/discover/${context.query.mediaType}?primary_release_year=2021&with_genres=${context.query.genre_id}&api_key=8e36ebdb3d86e880fffd99dbe59dffb1&language=en-US`
     );
 
     console.log("genresData", genresData.data);

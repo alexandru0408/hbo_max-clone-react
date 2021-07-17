@@ -1,6 +1,3 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-import { useStateContext } from "../components/HBOProvider";
 import MainLayout from "../components/Layouts/MainLayout";
 import FeaturedMedia from "../components/UI/FeaturedMedia/FeaturedMedia";
 import MediaRow from "../components/UI/MediaRow/MediaRow";
@@ -9,9 +6,6 @@ import LazyLoad from "react-lazyload";
 import PlaceHolders from "../components/UI/PlaceHolders/PlaceHolders";
 
 export default function Home() {
-  const globalState = useStateContext();
-  const router = useRouter();
-  useEffect(() => {}, []);
   return AuthCheck(
     <MainLayout>
       <FeaturedMedia
@@ -20,6 +14,8 @@ export default function Home() {
         location="In cinemas and HBO MAX. Streaming throughout August 4."
         linkUrl="/movie/460465"
         type="front"
+        mediaType={"movie"}
+        mediaId={460465}
       />
       <LazyLoad
         offset={-400}

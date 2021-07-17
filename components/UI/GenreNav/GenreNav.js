@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useStateContext } from "../../HBOProvider";
 import Link from "next/link";
 
 const GenreNav = (props) => {
@@ -16,7 +15,7 @@ const GenreList = (props) => {
   return props.genresData.map((item) => {
     return (
       <li key={item.id}>
-        <Link href="/">
+        <Link href={`/${props.mediaType}/genre/${item.id}`}>
           <a>{item.name}</a>
         </Link>
       </li>

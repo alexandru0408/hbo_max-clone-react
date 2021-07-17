@@ -11,24 +11,6 @@ import axios from "axios";
 
 export default function SingleMovieView(props) {
   const router = useRouter();
-  //   const { id } = router.query;
-
-  // const [mediaData, setMediaData] = useState(false);
-
-  // useEffect(() => {
-  //   async function getMedia() {
-  //     try {
-  //       const response = await axios.get(
-  //         `https://api.themoviedb.org/3/movie/${props.query.id}?api_key=8e36ebdb3d86e880fffd99dbe59dffb1&language=en-US`
-  //       );
-  //       setMediaData(response.data);
-  //       console.log(response);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   }
-  //   getMedia();
-  // }, [props.query.id]);
 
   return AuthCheck(
     <MainLayout>
@@ -42,6 +24,8 @@ export default function SingleMovieView(props) {
         location="In cinemas and HBO MAX. Streaming throughout August 4."
         linkUrl="/movies/id"
         type="single"
+        mediaType={props.query.mediaType}
+        mediaId={props.mediaData.id}
       />
       <LazyLoad
         offset={-400}
@@ -49,6 +33,7 @@ export default function SingleMovieView(props) {
       >
         <MediaRow
           title="Similar To This"
+          updateData={props.query.id}
           type="small-v"
           mediaType={props.query.mediaType}
           endpoint={`${props.query.mediaType === "movie" ? "movie" : "tv"}/${
@@ -56,7 +41,11 @@ export default function SingleMovieView(props) {
           }/similar?`}
         />
       </LazyLoad>
-      <CastInfo mediaID={props.query.id} mediaType={props.query.mediaType} />
+      <CastInfo
+        mediaID={props.query.id}
+        mediaType={props.query.mediaType}
+        updateData={props.mediaData.id}
+      />
     </MainLayout>
   );
 }
